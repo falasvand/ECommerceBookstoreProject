@@ -2,6 +2,7 @@ package com.adminportal.domain;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -31,13 +32,21 @@ public class User implements UserDetails{
 	private String password;
 	private String firstName;
 	private String lastName;
+	
 	@Column(name="email", nullable=false, updatable=false)
 	private String email;
 	private String phone;
 	private boolean enabled=true;
+	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JsonIgnore
 	private Set<UserRole> userRoles = new HashSet<>();
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="user")
+	private List<UserShipping> userShippingList;
+	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="user")
+	private List<UserPayment> userPaymentList;
 	
 	public Long getId() {
 		return id;
@@ -92,6 +101,19 @@ public class User implements UserDetails{
 	}
 	public void setUserRoles(Set<UserRole> userRoles) {
 		this.userRoles = userRoles;
+	}
+	
+	public List<UserShipping> getUserShippingList() {
+		return userShippingList;
+	}
+	public void setUserShippingList(List<UserShipping> userShippingList) {
+		this.userShippingList = userShippingList;
+	}
+	public List<UserPayment> getUserPaymentList() {
+		return userPaymentList;
+	}
+	public void setUserPaymentList(List<UserPayment> userPaymentList) {
+		this.userPaymentList = userPaymentList;
 	}
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
