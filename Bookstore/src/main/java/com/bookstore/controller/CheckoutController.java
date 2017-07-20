@@ -35,6 +35,7 @@ import com.bookstore.service.UserPaymentService;
 import com.bookstore.service.UserService;
 import com.bookstore.service.UserShippingService;
 import com.bookstore.utility.CanadaConstants;
+import com.bookstore.utility.MailConstructor;
 
 @Controller
 public class CheckoutController {
@@ -45,6 +46,9 @@ public class CheckoutController {
 
 	@Autowired
 	private JavaMailSender mailSender;
+	
+	@Autowired
+	private MailConstructor mailConstructor;
 	
 	@Autowired
 	private UserService userService;
@@ -204,7 +208,7 @@ public class CheckoutController {
 		
 		model.addAttribute("estimatedDeliveryDate", estimatedDeliveryDate);
 		
-		return "orderSubmittedPage";
+		return "orderSubmitted";
 	}
 
 	@RequestMapping("/setShippingAddress")

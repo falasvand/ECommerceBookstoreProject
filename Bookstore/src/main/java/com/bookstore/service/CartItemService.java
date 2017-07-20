@@ -19,4 +19,6 @@ public interface CartItemService {
 
 	void removeCartItem(CartItem itemId);
 
+	CartItem save(CartItem cartItem);
+
 }
