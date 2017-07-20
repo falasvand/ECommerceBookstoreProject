@@ -52,6 +52,9 @@ public class User implements UserDetails{
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="user")
 	private List<UserPayment> userPaymentList;
 	
+	@OneToMany(mappedBy="user")
+	private List<Order> orderList;
+	
 	public Long getId() {
 		return id;
 	}
@@ -124,6 +127,12 @@ public class User implements UserDetails{
 	}
 	public void setShoppingCart(ShoppingCart shoppingCart) {
 		this.shoppingCart = shoppingCart;
+	}
+	public List<Order> getOrderList() {
+		return orderList;
+	}
+	public void setOrderList(List<Order> orderList) {
+		this.orderList = orderList;
 	}
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
