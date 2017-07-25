@@ -182,9 +182,9 @@
 						<div class="col-md-6">
 							<div class="input-group">
 								<label> <input type="radio"
-									name="active" value="true" checked="checked" /> Active
+									name="active" value="true" th:checked="${book.active}" /> Active
 								</label> <br/><label> <input type="radio"
-									name="inactive" value="false" /> Inactive
+									name="active" value="false" th:checked="${!book.active}" /> Inactive
 								</label> <span class="help-block">Select whether the book is
 									active or inactive</span>
 							</div>
