@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+	xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:fragment="common-header">
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -17,7 +18,7 @@
 <!-- data table -->
 <link th:href="@{/css/jquery.dataTables.min.css}" rel="stylesheet" />
 <link th:href="@{/css/dataTables.bootstrap.min.css}" rel="stylesheet" />
-<link th:href="@{/css/font-awesome.min.css}"  rel="stylesheet" />
+<link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" />
 
 </head>
 
@@ -27,17 +28,18 @@
 		<nav class="navbar navbar-default navbar-inverse">
 			<div class="container-fluid">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="#">BOOKSTORE</a>
+					<a class="navbar-brand" th:href="@{/}">BOOKSTORE</a>
 				</div>
 				<div id="navbar">
 					<ul class="nav navbar-nav navbar-left">
-						<li class="dropdown"><a th:href="@{/bookshelf}" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">BOOKS <span class="caret"></span></a>
+						<li class="dropdown"><a th:href="@{/bookshelf}"
+							class="dropdown-toggle" data-toggle="dropdown" role="button"
+							aria-haspopup="true" aria-expanded="false">BOOKS <span
+								class="caret"></span></a>
 							<ul class="dropdown-menu">
 								<li><a th:href="@{/bookshelf}">Browse the Bookshelf</a></li>
-								<li><a href="#">Store Hours &#38; Directions</a></li>
-								<li><a href="#">FAQ</a></li>
+								<li><a th:href="@{/hours}">Store Hours &#38; Directions</a></li>
+								<li><a th:href="@{/faq}">FAQ</a></li>
 							</ul></li>
 						<li><form class="navbar-form">
 								<div class="form-group">
@@ -50,7 +52,8 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li><a th:href="@{/shoppingCart/cart}">SHOPPING CART</a></li>
 						<li><a sec:authorize="isAnonymous()" th:href="@{/login}">LOGIN</a></li>
-						<li><a sec:authorize="isAuthenticated()" th:href="@{/myProfile}">MY ACCOUNT</a></li>
+						<li><a sec:authorize="isAuthenticated()"
+							th:href="@{/myProfile}">MY ACCOUNT</a></li>
 						<li><a sec:authorize="isAuthenticated()" th:href="@{/logout}">LOGOUT</a></li>
 					</ul>
 				</div>
@@ -60,11 +63,72 @@
 		</nav>
 	</div>
 
+	<div th:fragment="footer">
+		<br /> <br />
+		<footer>
+			<div class="row">
+				<div class="col-xs-3 footerleft">
+					<a th:href="@{/}"><img class="img-responsive"
+						src="/images/bookstoreLogo.jpg" style="width: 200px" /></a>
+					<p>
+						Independent Book Store.<br />Serving customers with the best
+						service.
+					</p>
+				</div>
+				<div class="col-xs-3 paddingtop-bottom">
+					<h6 class="heading7">CONTACT</h6>
+					<ul class="post">
+						<p>
+							<i class="fa fa-map-pin"></i> 123 XXXXX Ave<br /> Toronto ON, CA
+							M4K 0C8
+						</p>
+						<p>
+							<i class="fa fa-phone"></i> Phone (CA) : +1 999 999 9999
+						</p>
+						<p>
+							<i class="fa fa-envelope"></i> E-mail : info@bookstore.com
+						</p>
+					</ul>
+				</div>
+				<div class="col-xs-3 paddingtop-bottom">
+					<h6 class="heading7">LINKS</h6>
+					<ul class="footer-ul">
+						<li><a href="#"> Privacy Policy</a></li>
+						<li><a href="#"> Terms &#38; Conditions</a></li>
+						<li><a th:href="@{/faq}"> Frequently Ask Questions</a></li>
+					</ul>
+				</div>
+				<div class="col-xs-3 paddingtop-bottom">
+					<h6 class="heading7">STORE HOURS</h6>
+					<div class="post">
+						<p>Monday - Saturday: 9am - 11pm</p>
+						<p>Sunday: 10am - 10pm</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+		<div class="copyright">
+			<div class="col-md-6">
+				<p>© 2017 - All Rights Reserved</p>
+			</div>
+			<div class="col-md-6">
+				<ul class="bottom_ul">
+					<li><a href="#">About us</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a th:href="@{/faq}">FAQ</a></li>
+					<li><a th:href="@{/hours}">Contact us</a></li>
+					<li><a href="#">Site Map</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
 	<div th:fragment="body-bottom-scripts">
 		<script th:src="@{/js/jquery.min.js}"></script>
 		<script th:src="@{/js/bootstrap.min.js}"></script>
 		<script th:src="@{/js/scripts.js}"></script>
-		
+
 		<!-- data Tables -->
 		<script th:src="@{/js/jquery.dataTables.min.js}"></script>
 		<script th:src="@{/js/dataTables.bootstrap.min.js}"></script>

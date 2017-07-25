@@ -82,6 +82,16 @@ public class HomeController {
 	public String index() {
 		return "index";
 	}
+	
+	@RequestMapping("/hours")
+	public String hours(){
+		return "hours";
+	}
+	
+	@RequestMapping("/faq")
+	public String faq(){
+		return "faq";
+	}
 
 	@RequestMapping("/login")
 	public String login(Model model) {
@@ -218,7 +228,7 @@ public class HomeController {
 		model.addAttribute("user", user);
 
 		model.addAttribute("classActiveEdit", true);
-		model.addAttribute("orderList", user.getOrderList());
+
 		return "myProfile";
 	}
 
@@ -549,6 +559,8 @@ public class HomeController {
 		model.addAttribute("user", currentUser);
 		model.addAttribute("classActiveEdit", true);
 		model.addAttribute("orderList", user.getOrderList());
+		model.addAttribute("listOfShippingAddresses", true);
+		model.addAttribute("listOfCreditCards", true);
 		
 		UserDetails userDetails = userSecurityService.loadUserByUsername(currentUser.getUsername());
 		

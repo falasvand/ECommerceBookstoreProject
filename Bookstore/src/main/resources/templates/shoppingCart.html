@@ -56,7 +56,7 @@
 
 					<!-- Display products in Cart -->
 					<div class="row" th:each="cartItem : ${cartItemList}">
-						<form action="@{/shoppingCart/updateCartItem}" method="post">
+						<form th:action="@{/shoppingCart/updateCartItem}" method="post">
 							<hr />
 							<div class="col-xs-2">
 								<a th:href="@{/bookDetail(id=${cartItem.book.id})}"> <img
@@ -109,7 +109,7 @@
 	</div>
 	<!-- end of container -->
 
-
+	<div th:replace="common/header :: footer"></div>
 	<div th:replace="common/header :: body-bottom-scripts"></div>
 </body>
 </html>
